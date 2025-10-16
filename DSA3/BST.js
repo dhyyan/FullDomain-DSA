@@ -105,7 +105,7 @@ class BST{
         }
         return -1
     }
-
+ 
     height(current=this.head){
         if(!current)return -1
         let left=this.height(current.left)
@@ -159,6 +159,29 @@ class BST{
             return null; // invalid k
         }
         return result[k - 1];
+    }
+
+    isPerfect(current=this.root){
+        if(!current)return
+        //we already implemented the height method
+        let height=this.height()
+        
+        function check(node,depth=0){
+            if(!node)return 
+            
+            if(!node.left&&!node.right){
+                return depth==height
+            }
+            
+            if(!node.left||!node.right){
+                return false
+            }
+            
+            return check(node.left,depth+1)&&check(node.right,depth+1)
+                            
+        }
+        
+        return check(current)
     }
 
 

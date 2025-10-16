@@ -31,7 +31,7 @@ class Trie{
     }
     
     
-    autoCompletion(prefix){
+    autoCompletion(prefix){        
         let node =this.root
         for(let val of prefix){
             if(!node.children[val])return
